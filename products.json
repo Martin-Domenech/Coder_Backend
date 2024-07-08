@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Towels",
+    "description": "Aliquam sit inventore incidunt modi. Facilis itaque illum esse velit autem incidunt modi quis. Quas qui facilis ut ut non voluptate sapiente temporibus.",
+    "code": "RON",
+    "price": 750,
+    "status": false,
+    "stock": 871,
+    "category": "ivory",
+    "thumbnails": [
+      "http://placeimg.com/640/480/cats",
+      "http://placeimg.com/640/480/cats"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Mouse",
+    "description": "Esse itaque vero est. Quis praesentium deserunt. Aut maiores quo excepturi mollitia similique. Ab dolor illum. Laboriosam aliquid quibusdam reiciendis assumenda occaecati.",
+    "code": "BIF",
+    "price": 581,
+    "status": false,
+    "stock": 852,
+    "category": "fuchsia",
+    "thumbnails": [
+      "http://placeimg.com/640/480/cats",
+      "http://placeimg.com/640/480/cats"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Shirt",
+    "description": "Labore ut laborum. Eligendi omnis nihil. Ab porro ipsam fugiat omnis ipsam incidunt. Nostrum officia fugit. Voluptate sint dolores quia. Quaerat reiciendis sed voluptas aut voluptatem quae suscipit.",
+    "code": "KWD",
+    "price": 254,
+    "status": true,
+    "stock": 445,
+    "category": "cyan",
+    "thumbnails": [
+      "http://placeimg.com/640/480/cats",
+      "http://placeimg.com/640/480/cats"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Chips",
+    "description": "Molestias ducimus nihil doloremque vitae eum sequi aperiam at. Ab id labore. Quibusdam quibusdam eaque consequatur. Enim omnis hic occaecati quia debitis molestias nostrum saepe.",
+    "code": "FKP",
+    "price": 73,
+    "status": true,
+    "stock": 904,
+    "category": "sky blue",
+    "thumbnails": [
+      "http://placeimg.com/640/480/cats",
+      "http://placeimg.com/640/480/cats"
+    ]
+  }
+]
