@@ -25,7 +25,7 @@ El servidor se iniciará en `http://localhost:8080`.
     "price": {{$randomInt}},
     "status": {{$randomBoolean}},
     "stock": {{$randomInt}},
-    "category": {{$randomColor}},
+    "category": "{{$randomColor}}",
     "thumbnails": ["{{$randomCatsImage}}", "{{$randomCatsImage}}"]
   }
 - **PUT /api/products/:pid**: Actualizar un producto existente.
