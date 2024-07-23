@@ -1,13 +1,13 @@
-const express = require("express")
-const router = express.Router()
-const fs = require("fs")
-const { products } = require("./products.router")
+import { Router } from "express"
+const router = Router()
+import { readFileSync, writeFileSync } from "fs"
+
 
 
 router.post("/api/cart/", (req,res) => {
     let newCart = req.body
     let currentCarts = []
-    const data = fs.readFileSync('carts.json', "utf-8")
+    const data = readFileSync('carts.json', "utf-8")
     if(data){
         currentCarts = JSON.parse(data)
     }
@@ -19,14 +19,14 @@ router.post("/api/cart/", (req,res) => {
     }
 
     currentCarts.push(newCart)
-    fs.writeFileSync('carts.json', JSON.stringify(currentCarts, null, 2))
+    writeFileSync('carts.json', JSON.stringify(currentCarts, null, 2))
     res.json({msg: "Carrito creado con exito"})
 })
 
 router.get("/api/cart/:cid", (req,res) => {
     const cid = parseInt(req.params.cid)
     let currentCarts = []
-    const data = fs.readFileSync('carts.json', "utf-8")
+    const data = readFileSync('carts.json', "utf-8")
     if(data){
         currentCarts = JSON.parse(data)
     }
@@ -41,13 +41,13 @@ router.post("/api/cart/:cid/product/:pid", (req,res) => {
     const pid = parseInt(req.params.pid)
 
     let currentCarts = []
-    const dataCart = fs.readFileSync('carts.json', "utf-8")
+    const dataCart = readFileSync('carts.json', "utf-8")
     if(dataCart){
         currentCarts = JSON.parse(dataCart)
     }
 
     let currentProducts = []
-    const dataProd = fs.readFileSync('carts.json', "utf-8")
+    const dataProd = readFileSync('carts.json', "utf-8")
     if(dataProd){
         currentProducts = JSON.parse(dataProd)
     }
@@ -69,9 +69,9 @@ router.post("/api/cart/:cid/product/:pid", (req,res) => {
             cartProduct.quantity++
             res.json({msg: `Se agrego el producto ${pid} al carrito ${cid}`})
         }
-        fs.writeFileSync('carts.json', JSON.stringify(currentCarts, null, 2))
+        writeFileSync('carts.json', JSON.stringify(currentCarts, null, 2))
     }
 })
 
 
-module.exports = router 
+export default router 

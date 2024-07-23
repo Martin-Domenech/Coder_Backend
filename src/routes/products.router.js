@@ -1,13 +1,12 @@
-const express = require("express")
-const router = express.Router()
-const fs = require('fs')
+import { Router } from "express"
+const router = Router()
+import { readFileSync, writeFileSync } from 'fs'
 
-let products = []
 
 router.get("/api/products", (req,res) => {
     let limit = parseInt(req.query.limit)
     let currentProducts = []
-    const data = fs.readFileSync('products.json', "utf-8")
+    const data = readFileSync('products.json', "utf-8")
     if(data){
         currentProducts = JSON.parse(data)
     }
@@ -22,7 +21,7 @@ router.get("/api/products", (req,res) => {
 router.get("/api/products/:pid", (req,res) => {
     const pid = parseInt(req.params.pid)
     let currentProducts = []
-    const data = fs.readFileSync('products.json', "utf-8")
+    const data = readFileSync('products.json', "utf-8")
     if(data){
         currentProducts = JSON.parse(data)
     }
@@ -44,7 +43,7 @@ router.post("/api/products", (req,res) => {
         try {
 
             let currentProducts = []
-            const data = fs.readFileSync('products.json', "utf-8")
+            const data = readFileSync('products.json', "utf-8")
 
             if(data){
                 currentProducts = JSON.parse(data)
@@ -59,7 +58,7 @@ router.post("/api/products", (req,res) => {
                 ...newProduct
             }
             currentProducts.push(newProduct)
-            fs.writeFileSync('products.json', JSON.stringify(currentProducts, null, 2))
+            writeFileSync('products.json', JSON.stringify(currentProducts, null, 2))
 
         }catch{
             res.status(404).json({msg: "error al escribir el archivo"})
@@ -74,7 +73,7 @@ router.put("/api/products/:pid", (req,res) => {
     const pid = parseInt(req.params.pid)
 
     let currentProducts = []
-    const data = fs.readFileSync('products.json', "utf-8")
+    const data = readFileSync('products.json', "utf-8")
     if(data){
         currentProducts = JSON.parse(data)
     }
@@ -93,7 +92,7 @@ router.put("/api/products/:pid", (req,res) => {
         if(category) product.category = category
         if(thumbnails) product.thumbnails = thumbnails
 
-        fs.writeFileSync('products.json', JSON.stringify(currentProducts, null, 2))
+        writeFileSync('products.json', JSON.stringify(currentProducts, null, 2))
         res.json({ msg: "Producto actualizado", product });
     }else{
         res.status(404).json({msg: "Producto no encontrado"})
@@ -104,16 +103,16 @@ router.delete("/api/products/:pid", (req,res) => {
     const pid = parseInt(req.params.pid)
 
     let currentProducts = []
-    const data = fs.readFileSync('products.json', "utf-8")
+    const data = readFileSync('products.json', "utf-8")
     if(data){
         currentProducts = JSON.parse(data)
     }
 
     currentProducts = currentProducts.filter((prod) => prod.id !== pid)
-    fs.writeFileSync('products.json', JSON.stringify(currentProducts, null, 2))
+    writeFileSync('products.json', JSON.stringify(currentProducts, null, 2))
     res.json(`producto id:${pid} fue eliminado con exito`)
     
 })
 
 
-module.exports = router
+export default router

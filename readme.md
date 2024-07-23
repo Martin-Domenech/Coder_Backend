@@ -1,41 +1,31 @@
 # API de E-commerce
 
-Esta es una API de ejemplo para un sistema de e-commerce que gestiona productos y carritos de compras. Utiliza Node.js y Express para el backend y Postman para realizar pruebas de las operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
-
-## Requisitos
-
-- Node.js instalado en tu máquina
-- Postman (o cualquier otra herramienta similar) para probar las APIs
-
-El servidor se iniciará en `http://localhost:8080`.
+Esta es una API de ejemplo para un sistema de e-commerce que gestiona productos. Utiliza Node.js, Express, websockets y handlebars como motor de plantillas. 
 
 ## Endpoints
 
-### Productos
+El servidor se iniciará en `http://localhost:8080` donde se mostrara la lista de productos.
+En el endpoint `http://localhost:8080/realtimeproducts` habra un formulario donde se pueden agregar productos y una lista que se actualiza en tiempo real.
 
-- **GET /api/products**: Obtener todos los productos.
-- **GET /api/products/:pid**: Obtener un producto por ID.
-- **POST /api/products**: Agregar un nuevo producto. En el cuerpo de la solicitud (body), se pueden usar los siguientes campos para generar productos aleatorios:
 
-  ```json
-  {
-    "title": "{{$randomProduct}}",
-    "description": "{{$randomLoremParagraph}}",
-    "code": "{{$randomCurrencyCode}}",
-    "price": {{$randomInt}},
-    "status": {{$randomBoolean}},
-    "stock": {{$randomInt}},
-    "category": "{{$randomColor}}",
-    "thumbnails": ["{{$randomCatsImage}}", "{{$randomCatsImage}}"]
-  }
-- **PUT /api/products/:pid**: Actualizar un producto existente.
-- **DELETE /api/products/:pid**: Eliminar un producto por ID.
+## Descripción de Archivos
 
-### Carritos
+- `public/css/styles.css`: Contiene estilos CSS para la aplicación.
+- `public/js/index.js`: Maneja la lógica del cliente, incluyendo la comunicación por WebSocket.
+- `routes/products.router.js`: Maneja las rutas relacionadas con los productos.
+- `routes/carts.router.js`: Maneja las rutas relacionadas con los carritos de compra.
+- `routes/views.router.js`: Maneja las rutas relacionadas con las vistas.
+- `views/layouts/main.handlebars`: Plantilla principal de Handlebars.
+- `views/realTimeProducts.handlebars`: Vista que muestra y permite agregar productos en tiempo real.
+- `views/home.handlebars`: Vista que muestra los productos.
+- `app.js`: Configuración principal del servidor y la lógica de WebSocket.
+- `utils.js`: Contiene utilidades compartidas.
+- `products.json`: Archivo donde se almacenan los productos.
 
-- **POST /api/cart**: Crear un nuevo carrito vacío.
-- **GET /api/cart/:cid**: Obtener un carrito por ID.
-- **POST /api/cart/:cid/product/:pid**: Agregar un producto a un carrito existente pasandole los IDs correspondientes.
+## Funcionalidades
+
+- **Agregar Producto**: Permite agregar nuevos productos a la lista.
+- **Visualización en Tiempo Real**: La lista de productos se actualiza en tiempo real cuando se agregan nuevos productos.
 
 ## Persistencia de Datos
 
